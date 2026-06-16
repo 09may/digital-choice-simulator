@@ -64,6 +64,7 @@ export function ResultPage({
   onAbout,
 }: ResultPageProps) {
   const [shareCopied, setShareCopied] = useState(false)
+  const [isInsightOpen, setIsInsightOpen] = useState(false)
 
   const orderedScores = profileTypeOrder
     .map((type) => scores.find((s) => s.type === type))
@@ -102,6 +103,27 @@ export function ResultPage({
       }
     }
   }
+
+  const typeCountMap = {
+    social: orderedScores.find((s) => s.type === 'social')?.score ?? 0,
+    productive: orderedScores.find((s) => s.type === 'productive')?.score ?? 0,
+    entertainment: orderedScores.find((s) => s.type === 'entertainment')?.score ?? 0,
+  }
+
+  const totalSelections = Math.max(
+    1,
+    typeCountMap.social + typeCountMap.productive + typeCountMap.entertainment,
+  )
+
+  const phaseRows = [
+    { label: '습관', questions: 'Q1–Q2', contribution: 40 },
+    { label: '상황', questions: 'Q3–Q4', contribution: 40 },
+    { label: '방향', questions: 'Q5', contribution: 20 },
+  ] as const
+
+  const insightPreviewText = isHarmonist
+    ? '당신의 선택은 연결, 성장, 즐거움이 골고루 섞여 있는 편이에요.'
+    : `당신은 ${profileTypeLabels[profile.baseType]} 쪽 선택이 좀 더 많았어요.`
 
   return (
     <section
@@ -258,7 +280,64 @@ export function ResultPage({
             <p className="result-report__summary">{profile.summary}</p>
           </ReportCard>
 
-          <footer className="result-report__footer result-report__reveal result-report__reveal--8">
+          <section className="result-insight result-report__reveal result-report__reveal--8" aria-label="분석 근거">
+            <p className="result-insight__preview">{insightPreviewText}</p>
+            <button
+              type="button"
+              className="result-insight__toggle"
+              aria-expanded={isInsightOpen}
+              onClick={() => setIsInsightOpen((prev) => !prev)}
+            >
+              결과 해석 보기 →
+            </button>
+
+            {isInsightOpen && (
+              <div className="result-insight__detail" role="region" aria-label="분석 상세">
+                <article className="result-insight__block">
+                  <h3 className="result-insight__title">Selection Distribution</h3>
+                  <p className="result-insight__text">
+                    연결 {typeCountMap.social} / 성장 {typeCountMap.productive} / 즐거움{' '}
+                    {typeCountMap.entertainment}
+                  </p>
+                </article>
+
+                <article className="result-insight__block">
+                  <h3 className="result-insight__title">Question Influence</h3>
+                  <p className="result-insight__text">
+                    {isHarmonist
+                      ? '여러 문항에서 선택이 고르게 나와서 균형형 특징이 더 뚜렷해졌어요.'
+                      : `${profileTypeLabels[profile.baseType]} 선택이 여러 문항에서 반복되면서 최종 결과에 가장 큰 영향을 줬어요.`}
+                  </p>
+                </article>
+
+                <article className="result-insight__block">
+                  <h3 className="result-insight__title">Phase Breakdown</h3>
+                  <ul className="result-insight__phase-list">
+                    {phaseRows.map((row) => (
+                      <li key={row.label} className="result-insight__phase-item">
+                        <span>
+                          {row.label} ({row.questions})
+                        </span>
+                        <span>{row.contribution}%</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="result-insight__text">
+                    초반 습관과 상황 선택이 전체 흐름을 만들고, 마지막 선택이 결과를 정리하는 역할을 해요.
+                  </p>
+                </article>
+
+                <article className="result-insight__block">
+                  <h3 className="result-insight__title">Final Interpretation</h3>
+                  <p className="result-insight__text">
+                    총 {totalSelections}개 선택 중 {profileTypeLabels[profile.baseType]} 쪽이 더 많아서 {profile.title}으로 나왔어요.
+                  </p>
+                </article>
+              </div>
+            )}
+          </section>
+
+          <footer className="result-report__footer result-report__reveal result-report__reveal--9">
             <Button size="lg" onClick={handleShare}>
               {shareCopied ? resultCopy.shareCopied : resultCopy.shareButton}
             </Button>

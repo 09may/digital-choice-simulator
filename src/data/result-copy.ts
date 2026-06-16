@@ -4,12 +4,12 @@ export const resultCopy = {
   eyebrow: 'FLOW PROFILE',
 
   intro: [
-    '다섯 번의 선택으로 만들어진 당신의 흐름이에요.',
+    '다섯 번의 선택으로 당신의 흐름이 만들어졌어요.',
     '이 결과는 평가가 아니라, 지금의 당신을 읽어낸 기록입니다.',
   ],
 
   evidenceNote:
-    '습관과 상황 속 선택 패턴이 함께 반영된 결과입니다.',
+    '습관과 상황에서 나온 선택 패턴이 함께 반영됐어요.',
 
   disclaimer:
     '정답도 오답도 없습니다. 지금의 선택들이 어떤 흐름을 만들었는지만 보여줍니다.',
@@ -42,7 +42,7 @@ export const resultCopy = {
 
   sections: {
     digitalTendency: '반복된 선택에서 드러난 흐름입니다.',
-    keyTraits: '자주 반복된 행동 3가지를 정리했어요.',
+    keyTraits: '자주 반복된 행동 3가지를 골라봤어요.',
     behaviorPattern: '하루 동안의 디지털 사용 흐름입니다.',
     balancePoint: '과하지 않게 유지하기 위한 작은 제안입니다.',
     distribution: '연결 / 성장 / 즐거움의 비율입니다.',

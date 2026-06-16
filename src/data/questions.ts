@@ -49,7 +49,7 @@ export const questions: Question[] = [
       {
         id: 'q2-a',
         label: '메시지 / SNS',
-        description: '사람들과 계속 연결되어 있다',
+        description: '사람들과 계속 연락한다',
         emoji: '💬',
         type: 'social',
       },
@@ -178,7 +178,7 @@ export const questions: Question[] = [
       {
         id: 'q5-d',
         label: '기록하고 남기기',
-        description: '사진이나 글로 남긴다',
+        description: '사진이나 글로 남기는 편이다',
         emoji: '📸',
         type: 'social',
       },
@@ -190,9 +190,17 @@ export const TOTAL_QUESTIONS = questions.length
 
 export const introCopy = {
   eyebrow: brandName,
-  title: '당신은 어떤 방식으로\n하루를 시작하나요?',
-  subtitle: '사용 시간이 아니라\n그 안에서 어떤 선택을 하는지를 봅니다.',
-  hint: '지금의 당신은 어디에 더 가까울까요?',
+  title: '우리는 하루를 생각보다\n먼저 ‘선택’으로 시작합니다.',
+  subtitle:
+    'FLOWTYPE는 당신의 선택을 통해\n일상 속 결정 패턴을 읽어내는 테스트입니다.',
+  hint: '지금부터 5개의 선택이 이어집니다.',
+  structure: [
+    '습관 — 무의식적으로 먼저 나오는 선택',
+    '상황 — 순간의 조건에 따라 달라지는 선택',
+    '방향 — 선택을 이끄는 기준',
+  ],
+  detail:
+    '짧은 선택들을 통해\n지금 당신의 선택 방식이 어떻게 움직이고 있는지 확인해보세요.',
   cta: '시작하기',
   aboutLink: '이 테스트는 뭐예요?',
 }
@@ -203,8 +211,8 @@ export const calculatingCopy = {
   messages: [
     '조금만 기다려 주세요',
     '선택들을 정리하는 중이에요',
-    '패턴을 보고 있어요',
-    '당신의 흐름을 찾고 있어요',
+    '패턴을 확인하고 있어요',
+    '흐름을 보고 있어요',
     '거의 다 됐어요',
   ],
 }

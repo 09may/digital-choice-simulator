@@ -8,6 +8,22 @@ interface IntroPageProps {
   onAbout: () => void
 }
 
+function StructureItem({ text }: { text: string }) {
+  const [label, description] = text.split(' — ')
+
+  return (
+    <li className="landing__structure-item">
+      <span className="landing__structure-label">{label}</span>
+      {description && (
+        <>
+          {' — '}
+          {description}
+        </>
+      )}
+    </li>
+  )
+}
+
 export function IntroPage({ onStart, onAbout }: IntroPageProps) {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -40,6 +56,16 @@ export function IntroPage({ onStart, onAbout }: IntroPageProps) {
 
         <p className="landing__hint landing__reveal landing__reveal--2">
           {introCopy.hint}
+        </p>
+
+        <ul className="landing__structure landing__reveal landing__reveal--2">
+          {introCopy.structure.map((item) => (
+            <StructureItem key={item} text={item} />
+          ))}
+        </ul>
+
+        <p className="landing__detail landing__reveal landing__reveal--3">
+          <Multiline text={introCopy.detail} />
         </p>
 
         <div className="landing__cta landing__reveal landing__reveal--3">

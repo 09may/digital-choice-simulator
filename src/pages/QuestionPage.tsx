@@ -14,6 +14,28 @@ interface QuestionPageProps {
   onBack: () => void
 }
 
+function SelectionReaction({ reactions }: { reactions: readonly string[] }) {
+  const [index, setIndex] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((i) => (i + 1) % reactions.length)
+    }, 480)
+
+    return () => clearInterval(interval)
+  }, [reactions.length])
+
+  return (
+    <p
+      className="quiz-page__subtext quiz-page__subtext--reaction"
+      aria-live="polite"
+      key={index}
+    >
+      {reactions[index]}
+    </p>
+  )
+}
+
 export function QuestionPage({
   questionIndex,
   selectedOption,
@@ -25,23 +47,9 @@ export function QuestionPage({
 }: QuestionPageProps) {
   const question = questions[questionIndex]
   const reactions = getSelectionReactions(questionIndex)
-  const [reactionIndex, setReactionIndex] = useState(0)
 
   const isConfirming = selectedOption !== null
   const activePick = selectedOption ?? savedOptionId
-
-  useEffect(() => {
-    if (!isConfirming) {
-      setReactionIndex(0)
-      return
-    }
-
-    const interval = setInterval(() => {
-      setReactionIndex((i) => (i + 1) % reactions.length)
-    }, 480)
-
-    return () => clearInterval(interval)
-  }, [isConfirming, reactions.length])
 
   if (!question) return null
 
@@ -78,14 +86,15 @@ export function QuestionPage({
               ))}
             </h2>
 
-            {(question.subtext || isConfirming) && (
-              <p
-                className={`quiz-page__subtext${isConfirming ? ' quiz-page__subtext--reaction' : ''}`}
-                aria-live={isConfirming ? 'polite' : undefined}
-                key={isConfirming ? reactionIndex : 'prompt'}
-              >
-                {isConfirming ? reactions[reactionIndex] : question.subtext}
-              </p>
+            {isConfirming ? (
+              <SelectionReaction
+                key={selectedOption}
+                reactions={reactions}
+              />
+            ) : (
+              question.subtext && (
+                <p className="quiz-page__subtext">{question.subtext}</p>
+              )
             )}
           </header>
 
