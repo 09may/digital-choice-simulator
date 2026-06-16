@@ -100,5 +100,5 @@ export const aboutCopy = {
 
   backLabel: '돌아가기',
   startLabel: '시작하기',
-  linkLabel: '이 경험이 궁금하다면',
+  linkLabel: '이 테스트는 뭐예요?',
 } 

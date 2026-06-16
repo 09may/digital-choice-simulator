@@ -347,7 +347,6 @@ export function ResultPage({
             <button type="button" className="result-report__about-link mi-text-link" onClick={onAbout}>
               {aboutCopy.linkLabel}
             </button>
-            <p className="result-report__disclaimer">{resultCopy.disclaimer}</p>
             <p className="result-report__credit">
               {resultCopy.credit}
             </p>

@@ -484,14 +484,6 @@
   color: var(--report-accent);
 }
 
-.result-report__disclaimer {
-  font-size: var(--ds-text-xs);
-  color: var(--ds-color-text-tertiary);
-  margin: var(--ds-space-sm) 0 0;
-  line-height: var(--ds-leading-normal);
-  max-width: 28rem;
-}
-
 .result-report__credit {
   font-size: var(--ds-text-xs);
   color: var(--ds-color-text-tertiary);

@@ -11,9 +11,6 @@ export const resultCopy = {
   evidenceNote:
     '습관과 상황에서 나온 선택 패턴이 함께 반영됐어요.',
 
-  disclaimer:
-    '정답도 오답도 없습니다. 지금의 선택들이 어떤 흐름을 만들었는지만 보여줍니다.',
-
   sharedNote:
     '같은 FLOW PROFILE을 보고 있는 사람들이 있어요.',
 

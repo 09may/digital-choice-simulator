@@ -43,7 +43,7 @@ export const questions: Question[] = [
   {
     id: 'q2',
     category: `${questionPhases.habit} · 2/2`,
-    question: '하루 중 가장 오래 머무는 곳은 어디인가요?',
+    question: '하루 중 가장 오래 머무는 곳은\n어디인가요?',
     subtext: '자주 들어가는 앱을 떠올려보세요.',
     options: [
       {
