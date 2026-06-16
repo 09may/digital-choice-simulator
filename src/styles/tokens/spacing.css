@@ -1,0 +1,39 @@
+:root {
+  --ds-space-unit: 4px;
+
+  --ds-space-xs: 4px;
+  --ds-space-sm: 8px;
+  --ds-space-md: 16px;
+  --ds-space-lg: 24px;
+  --ds-space-xl: 40px;
+  --ds-space-2xl: 64px;
+  --ds-space-3xl: 96px;
+
+  /* Semantic spacing — 페이지·컴포넌트 공통 */
+  --ds-space-page-x: var(--ds-space-lg);
+  --ds-space-page-y: var(--ds-space-2xl);
+  --ds-space-section: 36px;
+  --ds-space-stack: 14px;
+  --ds-space-stack-lg: 22px;
+  --ds-space-inline: var(--ds-space-sm);
+  --ds-space-card: 36px;
+  --ds-space-card-compact: 22px;
+
+  /* Aliases */
+  --space-xs: var(--ds-space-xs);
+  --space-sm: var(--ds-space-sm);
+  --space-md: var(--ds-space-md);
+  --space-lg: var(--ds-space-lg);
+  --space-xl: var(--ds-space-xl);
+  --space-2xl: var(--ds-space-2xl);
+  --space-3xl: var(--ds-space-3xl);
+}
+
+@media (max-width: 640px) {
+  :root {
+    --ds-space-page-x: var(--ds-space-md);
+    --ds-space-page-y: var(--ds-space-xl);
+    --ds-space-section: var(--ds-space-lg);
+    --ds-space-card: var(--ds-space-lg);
+  }
+}

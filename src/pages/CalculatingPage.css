@@ -1,0 +1,104 @@
+.calculating-page {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--ds-space-page-y) var(--ds-space-page-x);
+  position: relative;
+}
+
+.calculating-page__ambient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.calculating-page__orb {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: var(--ds-color-accent-soft);
+  filter: blur(80px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.5;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+}
+
+.calculating-page__content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 380px;
+  padding: var(--ds-space-card);
+  background: var(--ds-color-surface);
+  border: 1px solid var(--ds-color-border);
+  border-radius: var(--ds-radius-xl);
+  box-shadow: var(--ds-shadow-card);
+  animation: scaleIn var(--ds-transition-slow) both;
+}
+
+.calculating-page__loader {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  margin: 0 auto var(--ds-space-lg);
+}
+
+.calculating-page__ring {
+  position: absolute;
+  inset: 0;
+  border: 2.5px solid var(--ds-color-border);
+  border-top-color: var(--ds-color-accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.calculating-page__ring--inner {
+  inset: 8px;
+  border-top-color: var(--ds-color-accent-muted);
+  animation: spin 1.4s linear infinite reverse;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.calculating-page__title {
+  font-size: var(--ds-text-xl);
+  font-weight: var(--ds-font-semibold);
+  letter-spacing: var(--ds-tracking-normal);
+  color: var(--ds-color-text-primary);
+  margin: 0 0 var(--ds-space-sm);
+}
+
+.calculating-page__message {
+  font-size: var(--ds-text-sm);
+  color: var(--ds-color-text-tertiary);
+  margin: 0;
+  animation: fadeIn var(--ds-transition-base) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .calculating-page__orb {
+    animation: none;
+  }
+}

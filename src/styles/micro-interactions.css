@@ -1,0 +1,86 @@
+/**
+ * Micro-interactions — subtle, premium motion tokens & shared patterns
+ */
+
+:root {
+  --ds-micro-lift: -1px;
+  --ds-micro-press: 0.97;
+  --ds-micro-fade-distance: 10px;
+  --ds-micro-enter: 420ms var(--ds-ease-out);
+  --ds-micro-exit: 280ms var(--ds-ease-in-out);
+}
+
+@keyframes miFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(var(--ds-micro-fade-distance));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes miFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes miScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes miPress {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(var(--ds-micro-press));
+  }
+}
+
+/* Text links — landing, result, about */
+.mi-text-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+  color: var(--ds-color-text-secondary);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+  transition:
+    color var(--ds-transition-fast),
+    text-decoration-color var(--ds-transition-fast),
+    opacity var(--ds-transition-fast);
+}
+
+.mi-text-link:hover {
+  color: var(--ds-color-accent);
+  text-decoration-color: color-mix(in srgb, var(--ds-color-accent) 50%, transparent);
+}
+
+.mi-text-link:active {
+  opacity: 0.75;
+  transform: scale(0.99);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mi-text-link:active {
+    transform: none;
+  }
+}

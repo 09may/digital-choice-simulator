@@ -1,0 +1,109 @@
+/**
+ * Typography — hierarchy scale
+ * display > heading > lead > body > caption > eyebrow > label
+ */
+
+:root {
+  --ds-font-sans: 'Pretendard Variable', Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+
+  --ds-text-xs: 0.8125rem;
+  --ds-text-sm: 0.875rem;
+  --ds-text-base: 1.0625rem;
+  --ds-text-lg: 1.25rem;
+  --ds-text-xl: 1.5rem;
+  --ds-text-2xl: 2rem;
+  --ds-text-3xl: 2.75rem;
+  --ds-text-4xl: 3.5rem;
+
+  --ds-font-regular: 400;
+  --ds-font-medium: 500;
+  --ds-font-semibold: 600;
+  --ds-font-bold: 700;
+
+  --ds-leading-tight: 1.2;
+  --ds-leading-snug: 1.4;
+  --ds-leading-normal: 1.58;
+  --ds-leading-relaxed: 1.72;
+
+  --ds-tracking-tight: -0.04em;
+  --ds-tracking-normal: -0.02em;
+  --ds-tracking-wide: 0.06em;
+  --ds-tracking-wider: 0.1em;
+
+  /* Aliases */
+  --font-sans: var(--ds-font-sans);
+  --text-xs: var(--ds-text-xs);
+  --text-sm: var(--ds-text-sm);
+  --text-base: var(--ds-text-base);
+  --text-lg: var(--ds-text-lg);
+  --text-xl: var(--ds-text-xl);
+  --text-2xl: var(--ds-text-2xl);
+  --text-3xl: var(--ds-text-3xl);
+  --text-4xl: var(--ds-text-4xl);
+  --leading-tight: var(--ds-leading-tight);
+  --leading-normal: var(--ds-leading-normal);
+  --leading-relaxed: var(--ds-leading-relaxed);
+}
+
+/* ── Hierarchy utilities ── */
+.ds-text-display {
+  font-size: clamp(var(--ds-text-3xl), 8vw, var(--ds-text-4xl));
+  font-weight: var(--ds-font-bold);
+  letter-spacing: var(--ds-tracking-tight);
+  line-height: var(--ds-leading-tight);
+  color: var(--ds-color-text-primary);
+}
+
+.ds-text-heading {
+  font-size: clamp(var(--ds-text-xl), 5vw, var(--ds-text-2xl));
+  font-weight: var(--ds-font-bold);
+  letter-spacing: var(--ds-tracking-tight);
+  line-height: var(--ds-leading-tight);
+  color: var(--ds-color-text-primary);
+}
+
+.ds-text-lead {
+  font-size: clamp(var(--ds-text-base), 2.5vw, var(--ds-text-lg));
+  font-weight: var(--ds-font-medium);
+  line-height: var(--ds-leading-snug);
+  color: var(--ds-color-text-primary);
+}
+
+.ds-text-body {
+  font-size: var(--ds-text-base);
+  font-weight: var(--ds-font-regular);
+  line-height: var(--ds-leading-relaxed);
+  color: var(--ds-color-text-secondary);
+}
+
+.ds-text-caption {
+  font-size: var(--ds-text-sm);
+  font-weight: var(--ds-font-regular);
+  line-height: var(--ds-leading-normal);
+  color: var(--ds-color-text-secondary);
+}
+
+.ds-text-eyebrow {
+  font-size: var(--ds-text-xs);
+  font-weight: var(--ds-font-semibold);
+  letter-spacing: var(--ds-tracking-wider);
+  text-transform: uppercase;
+  color: var(--ds-color-text-accent);
+}
+
+.ds-text-label {
+  font-size: var(--ds-text-xs);
+  font-weight: var(--ds-font-semibold);
+  letter-spacing: var(--ds-tracking-wide);
+  text-transform: uppercase;
+  color: var(--ds-color-text-tertiary);
+}
+
+.ds-text-quote {
+  font-size: clamp(var(--ds-text-lg), 3.5vw, var(--ds-text-xl));
+  font-weight: var(--ds-font-medium);
+  font-style: italic;
+  line-height: var(--ds-leading-snug);
+  color: var(--ds-color-text-primary);
+}

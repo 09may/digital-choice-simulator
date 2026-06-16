@@ -1,0 +1,262 @@
+.about-page {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.about-page__ambient {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.about-page__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.28;
+}
+
+.about-page__orb--1 {
+  width: 320px;
+  height: 320px;
+  background: var(--ds-color-accent-soft);
+  top: -5%;
+  left: -8%;
+  animation: float 10s ease-in-out infinite;
+}
+
+.about-page__orb--2 {
+  width: 260px;
+  height: 260px;
+  background: var(--ds-color-accent-soft);
+  bottom: 10%;
+  right: -10%;
+  animation: float 12s ease-in-out infinite reverse;
+}
+
+.about-page__inner {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: var(--ds-space-3xl) var(--ds-space-page-x) var(--ds-space-2xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-xl);
+}
+
+.about-page__reveal {
+  animation: aboutReveal var(--ds-transition-slow) both;
+}
+
+.about-page__reveal--1 { animation-delay: 100ms; }
+.about-page__reveal--2 { animation-delay: 200ms; }
+.about-page__reveal--3 { animation-delay: 300ms; }
+.about-page__reveal--4 { animation-delay: 400ms; }
+.about-page__reveal--5 { animation-delay: 500ms; }
+.about-page__reveal--6 { animation-delay: 600ms; }
+.about-page__reveal--7 { animation-delay: 700ms; }
+
+@keyframes aboutReveal {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Hero ── */
+.about-page__hero {
+  text-align: center;
+  padding-bottom: var(--ds-space-md);
+}
+
+.about-page__eyebrow {
+  font-size: var(--ds-text-xs);
+  font-weight: var(--ds-font-semibold);
+  letter-spacing: var(--ds-tracking-wider);
+  text-transform: uppercase;
+  color: var(--ds-color-accent);
+  margin: 0 0 var(--ds-space-lg);
+}
+
+.about-page__title {
+  font-size: clamp(2rem, 7vw, 2.5rem);
+  font-weight: var(--ds-font-bold);
+  letter-spacing: var(--ds-tracking-tight);
+  line-height: 1.15;
+  color: var(--ds-color-text-primary);
+  margin: 0 0 var(--ds-space-lg);
+}
+
+.about-page__tagline {
+  font-size: var(--ds-text-base);
+  line-height: var(--ds-leading-relaxed);
+  color: var(--ds-color-text-secondary);
+  margin: 0;
+}
+
+/* ── Sections ── */
+.about-page__section {
+  padding: var(--ds-space-card);
+  background: var(--ds-color-surface);
+  border: 1px solid var(--ds-color-border);
+  border-radius: var(--ds-radius-lg);
+  box-shadow: var(--ds-shadow-card);
+  transition:
+    box-shadow var(--ds-transition-base),
+    transform var(--ds-transition-base);
+}
+
+.about-page__section:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--ds-shadow-card-hover);
+}
+
+.about-page__section-header {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-md);
+  margin-bottom: var(--ds-space-lg);
+  padding-bottom: var(--ds-space-md);
+  border-bottom: 1px solid var(--ds-color-border);
+}
+
+.about-page__section-number {
+  font-size: var(--ds-text-xs);
+  font-weight: var(--ds-font-bold);
+  font-family: var(--ds-font-mono, ui-monospace, monospace);
+  letter-spacing: 0.08em;
+  color: var(--ds-color-accent);
+  background: var(--ds-color-accent-soft);
+  border-radius: var(--ds-radius-sm);
+  padding: 0.2em 0.5em;
+}
+
+.about-page__section-title {
+  margin: 0;
+  font-size: var(--ds-text-lg);
+  font-weight: var(--ds-font-semibold);
+  color: var(--ds-color-text-primary);
+  letter-spacing: var(--ds-tracking-normal);
+}
+
+.about-page__section-lead {
+  margin: 0 0 var(--ds-space-lg);
+  font-size: var(--ds-text-lg);
+  font-weight: var(--ds-font-medium);
+  line-height: var(--ds-leading-relaxed);
+  color: var(--ds-color-text-primary);
+}
+
+.about-page__section-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-md);
+}
+
+.about-page__section-body p {
+  margin: 0;
+  font-size: var(--ds-text-base);
+  line-height: var(--ds-leading-relaxed);
+  color: var(--ds-color-text-secondary);
+}
+
+/* ── Value cards ── */
+.about-page__values {
+  list-style: none;
+  margin: var(--ds-space-lg) 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-md);
+}
+
+.about-page__value-card {
+  display: flex;
+  gap: var(--ds-space-md);
+  padding: var(--ds-space-md);
+  background: var(--ds-color-bg-muted);
+  border-radius: var(--ds-radius-md);
+  border: 1px solid var(--ds-color-border);
+}
+
+.about-page__value-icon {
+  flex-shrink: 0;
+  font-size: var(--ds-text-lg);
+  color: var(--ds-color-accent);
+  line-height: 1;
+  margin-top: 0.15em;
+}
+
+.about-page__value-title {
+  margin: 0 0 var(--ds-space-xs);
+  font-size: var(--ds-text-sm);
+  font-weight: var(--ds-font-semibold);
+  color: var(--ds-color-text-primary);
+}
+
+.about-page__value-desc {
+  margin: 0;
+  font-size: var(--ds-text-sm);
+  line-height: var(--ds-leading-relaxed);
+  color: var(--ds-color-text-secondary);
+}
+
+/* ── Closing ── */
+.about-page__closing {
+  text-align: center;
+  padding: var(--ds-space-card);
+  background: linear-gradient(
+    160deg,
+    var(--ds-color-accent-soft) 0%,
+    var(--ds-color-surface) 60%
+  );
+  border: 1px solid color-mix(in srgb, var(--ds-color-accent) 20%, var(--ds-color-border));
+  border-radius: var(--ds-radius-lg);
+  box-shadow: var(--ds-shadow-sm);
+}
+
+.about-page__closing-text {
+  margin: 0 0 var(--ds-space-xl);
+  font-size: var(--ds-text-base);
+  font-weight: var(--ds-font-medium);
+  line-height: var(--ds-leading-relaxed);
+  color: var(--ds-color-text-primary);
+}
+
+.about-page__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ds-space-md);
+}
+
+@media (max-width: 640px) {
+  .about-page__inner {
+    padding: var(--ds-space-2xl) var(--ds-space-page-x) var(--ds-space-xl);
+    gap: var(--ds-space-lg);
+  }
+
+  .about-page__section {
+    padding: var(--ds-space-lg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-page__reveal,
+  .about-page__orb {
+    animation: none !important;
+  }
+
+  .about-page__section:hover {
+    transform: none;
+  }
+}

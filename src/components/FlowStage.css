@@ -1,0 +1,65 @@
+.flow-stage {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  will-change: opacity;
+}
+
+.flow-stage__pane {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.flow-stage--idle {
+  opacity: 1;
+}
+
+.flow-stage--enter[data-direction='forward'] {
+  animation: flowEnter var(--ds-micro-enter) both;
+}
+
+.flow-stage--exit[data-direction='forward'] {
+  animation: flowExit var(--ds-micro-exit) both;
+}
+
+.flow-stage--enter[data-direction='backward'] {
+  animation: flowEnter var(--ds-micro-enter) both;
+}
+
+.flow-stage--exit[data-direction='backward'] {
+  animation: flowExit var(--ds-micro-exit) both;
+}
+
+@keyframes flowEnter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes flowExit {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flow-stage--enter,
+  .flow-stage--exit {
+    animation: none !important;
+  }
+}

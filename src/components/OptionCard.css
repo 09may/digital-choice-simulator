@@ -1,0 +1,237 @@
+/**
+ * OptionCard — Quiz interactive card
+ */
+
+.option-card {
+  display: block;
+  width: 100%;
+  padding: 0;
+  text-align: left;
+  border: 1px solid var(--ds-color-border);
+  background: var(--ds-color-surface);
+  border-radius: var(--ds-radius-md);
+  box-shadow: var(--ds-shadow-card);
+  opacity: 0;
+  animation: optionCardEnter var(--ds-transition-slow) both;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    transform var(--ds-transition-base),
+    box-shadow var(--ds-transition-base),
+    opacity var(--ds-transition-base),
+    border-color var(--ds-transition-base),
+    background-color var(--ds-transition-base);
+}
+
+.option-card:disabled {
+  cursor: default;
+}
+
+.option-card:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: var(--ds-shadow-card-hover);
+  border-color: color-mix(in srgb, var(--ds-color-accent) 20%, var(--ds-color-border));
+}
+
+.option-card:not(:disabled):active {
+  transform: translateY(0) scale(var(--ds-micro-press));
+  transition-duration: 100ms;
+}
+
+.option-card--picked {
+  opacity: 1;
+  transform: scale(1.025);
+  border-color: var(--ds-color-accent);
+  background: var(--ds-color-accent-soft);
+  box-shadow: var(--ds-shadow-elevated);
+  animation: optionCardPick var(--ds-transition-spring) both;
+}
+
+.option-card--saved {
+  opacity: 1;
+  border-color: var(--ds-color-accent);
+  background: var(--ds-color-accent-soft);
+  box-shadow: var(--ds-shadow-card);
+}
+
+.option-card--saved .option-card__chevron {
+  opacity: 1;
+  color: var(--ds-color-accent);
+  transform: translateX(0);
+}
+
+.option-card--saved .option-card__emoji {
+  transform: scale(1.06);
+}
+
+.option-card--dimmed {
+  opacity: 0.32;
+  transform: scale(0.98);
+  filter: grayscale(0.25);
+}
+
+.option-card__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-md);
+  padding: var(--ds-space-lg) var(--ds-space-xl);
+}
+
+.option-card__emoji {
+  font-size: 1.875rem;
+  line-height: 1;
+  flex-shrink: 0;
+  width: 44px;
+  text-align: center;
+  transition: transform var(--ds-transition-spring);
+}
+
+.option-card--picked .option-card__emoji {
+  transform: scale(1.12);
+}
+
+.option-card__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.option-card__label {
+  display: block;
+  font-size: var(--ds-text-base);
+  font-weight: var(--ds-font-semibold);
+  color: var(--ds-color-text-primary);
+  letter-spacing: var(--ds-tracking-normal);
+  line-height: var(--ds-leading-tight);
+}
+
+.option-card__description {
+  display: block;
+  margin-top: var(--ds-space-xs);
+  font-size: var(--ds-text-sm);
+  color: var(--ds-color-text-secondary);
+  line-height: var(--ds-leading-normal);
+}
+
+.option-card__chevron {
+  flex-shrink: 0;
+  font-size: var(--ds-text-base);
+  color: var(--ds-color-text-tertiary);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition:
+    opacity var(--ds-transition-base),
+    transform var(--ds-transition-base),
+    color var(--ds-transition-base);
+}
+
+.option-card:not(:disabled):hover .option-card__chevron {
+  opacity: 0.5;
+  transform: translateX(0);
+}
+
+.option-card--picked .option-card__chevron {
+  opacity: 1;
+  color: var(--ds-color-accent);
+  transform: translateX(2px);
+}
+
+@keyframes optionCardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes optionCardPick {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.04);
+  }
+  100% {
+    transform: scale(1.025);
+  }
+}
+
+.score-bar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-sm);
+}
+
+.score-bar__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.score-bar__label {
+  font-size: var(--ds-text-sm);
+  color: var(--ds-color-text-secondary);
+  font-weight: var(--ds-font-medium);
+}
+
+.score-bar__value {
+  font-size: var(--ds-text-xs);
+  color: var(--ds-color-text-tertiary);
+  font-variant-numeric: tabular-nums;
+}
+
+.score-bar__track {
+  height: 8px;
+  background: var(--ds-color-bg-muted);
+  border-radius: var(--ds-radius-full);
+  overflow: hidden;
+  border: 1px solid var(--ds-color-border);
+}
+
+.score-bar__fill {
+  height: 100%;
+  width: 100%;
+  border-radius: var(--ds-radius-full);
+  transform: scaleX(var(--score-ratio, 1));
+  transform-origin: left center;
+  animation: scoreBarGrow 880ms var(--ds-ease-out) both;
+}
+
+@keyframes scoreBarGrow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(var(--score-ratio, 1));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .option-card {
+    animation: none;
+    opacity: 1;
+  }
+
+  .option-card--picked {
+    animation: none;
+  }
+
+  .option-card:not(:disabled):hover,
+  .option-card:not(:disabled):active {
+    transform: none;
+  }
+
+  .score-bar__fill {
+    animation: none;
+    transform: scaleX(var(--score-ratio, 1));
+  }
+
+  .result-report__card:hover {
+    transform: none;
+  }
+
+  .result-report__emoji {
+    animation: none;
+  }
+}
