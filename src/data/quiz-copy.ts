@@ -1,10 +1,10 @@
-/** 선택 확정 후 subtext 슬롯에 표시되는 의미 반응 (0.5~1초 구간) */
-export const selectionReactions: readonly (readonly string[])[] = [
-  ['선택을 정리하고 있습니다', '습관의 방향을 읽는 중입니다'],
-  ['선택을 정리하고 있습니다', '패턴을 읽는 중입니다'],
-  ['선택을 정리하고 있습니다', '순간 반응을 읽는 중입니다'],
-  ['선택을 정리하고 있습니다', '흐름의 방향을 읽는 중입니다'],
-  ['선택을 정리하고 있습니다', '당신의 FLOWTYPE를 생성하고 있습니다'],
+ /** 선택 확정 후 subtext 슬롯에 표시되는 의미 반응 (0.5~1초 구간) */
+ export const selectionReactions: readonly (readonly string[])[] = [
+  ['선택을 정리하고 있어요', '습관적인 흐름을 살펴보고 있어요'],
+  ['선택을 정리하고 있어요', '패턴을 살펴보고 있어요'],
+  ['선택을 정리하고 있어요', '순간의 반응을 살펴보고 있어요'],
+  ['선택을 정리하고 있어요', '흐름의 방향을 살펴보고 있어요'],
+  ['선택을 정리하고 있어요', '당신의 FLOWTYPE를 만들고 있어요'],
 ] as const
 
 export function getSelectionReactions(questionIndex: number): readonly string[] {
@@ -20,7 +20,7 @@ export const questionPhases = {
 
 /** Phase별 진행 상태 안내 (category 슬롯에 함께 표시) */
 export const questionPhaseStatus = {
-  habit: '습관을 읽는 중',
-  situational: '상황을 읽는 중',
-  decisive: '방향을 정리하는 중',
+  habit: '습관을 정리하고 있어요',
+  situational: '상황을 정리하고 있어요',
+  decisive: '방향을 정리하고 있어요',
 } as const

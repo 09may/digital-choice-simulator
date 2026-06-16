@@ -165,9 +165,12 @@ export function ResultPage({
             <p className="result-report__meta">{resultCopy.vibeIntro}</p>
             <blockquote className="result-report__vibe">
               <span className="result-report__vibe-mark" aria-hidden="true">
-                "
+                “
               </span>
               <Multiline text={profile.vibe} />
+              <span className="result-report__vibe-mark result-report__vibe-mark--end" aria-hidden="true">
+                ”
+              </span>
             </blockquote>
           </figure>
 

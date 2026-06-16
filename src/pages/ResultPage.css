@@ -129,6 +129,7 @@
   border: 1px solid color-mix(in srgb, var(--report-accent) 25%, transparent);
   border-radius: var(--ds-radius-sm);
   padding: 0.25em 0.65em;
+  margin-top: var(--ds-space-xs);
   margin-bottom: var(--ds-space-lg);
 }
 
@@ -214,14 +215,22 @@
 }
 
 .result-report__vibe-mark {
-  display: block;
-  font-size: 3rem;
-  line-height: 0.6;
+  display: inline-block;
+  vertical-align: top;
+  transform: translateY(-0.04em);
+  font-size: 2.05rem;
+  line-height: 0.9;
   color: var(--report-accent);
-  opacity: 0.35;
+  opacity: 0.3;
   font-style: normal;
-  margin-bottom: var(--ds-space-sm);
+  font-weight: var(--ds-font-regular);
+  font-family: "Georgia", "Times New Roman", serif;
+  margin: 0 0.18em 0 0;
   user-select: none;
+}
+
+.result-report__vibe-mark--end {
+  margin: 0 0 0 0.08em;
 }
 
 .result-report__card {

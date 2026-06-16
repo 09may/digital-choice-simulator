@@ -1,4 +1,3 @@
-/** 이 질문(0-index)에 답한 직후 중간 전환 화면 표시 */
 export const MID_ANALYSIS_CHECKPOINTS = [1, 3] as const
 
 export type MidAnalysisCheckpoint = (typeof MID_ANALYSIS_CHECKPOINTS)[number]
@@ -12,23 +11,23 @@ export interface MidAnalysisCopy {
 
 export const midAnalysisCopy: Record<MidAnalysisCheckpoint, MidAnalysisCopy> = {
   1: {
-    label: '습관을 읽는 중',
-    title: '당신의 기본 흐름을 정리하고 있습니다',
-    subtitle: '선택들이 하나의 방향으로 모이고 있습니다',
+    label: '습관을 정리하는 중이에요',
+    title: '당신의 기본 흐름을 정리하고 있어요',
+    subtitle: '앞선 선택들이 하나의 방향으로 이어지고 있어요',
     messages: [
-      '선택을 정리하고 있습니다',
-      '패턴을 읽는 중입니다',
-      '다음 선택으로',
+      '선택들을 정리하고 있어요',
+      '흐름을 정리하고 있어요',
+      '다음 단계로 넘어갑니다',
     ],
   },
   3: {
-    label: '상황을 읽는 중',
-    title: '순간의 선택을 정리하고 있습니다',
-    subtitle: '반응의 패턴이 드러나고 있습니다',
+    label: '상황을 정리하는 중이에요',
+    title: '순간의 선택을 정리하고 있어요',
+    subtitle: '반복되는 반응 속에서 흐름이 보이고 있어요',
     messages: [
-      '선택을 정리하고 있습니다',
-      '흐름의 방향을 읽는 중입니다',
-      '마지막 선택으로',
+      '선택들을 정리하고 있어요',
+      '흐름을 정리하고 있어요',
+      '거의 다 왔어요',
     ],
   },
 }
