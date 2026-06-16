@@ -1,24 +1,11 @@
 import { useEffect } from 'react'
 import { introCopy } from '../data'
-import { Button } from '../components'
+import { Button, Multiline } from '../components'
 import './IntroPage.css'
 
 interface IntroPageProps {
   onStart: () => void
   onAbout: () => void
-}
-
-function Multiline({ text }: { text: string }) {
-  return (
-    <>
-      {text.split('\n').map((line, i, arr) => (
-        <span key={i}>
-          {line}
-          {i < arr.length - 1 && <br />}
-        </span>
-      ))}
-    </>
-  )
 }
 
 export function IntroPage({ onStart, onAbout }: IntroPageProps) {
@@ -31,7 +18,7 @@ export function IntroPage({ onStart, onAbout }: IntroPageProps) {
   }, [onStart])
 
   return (
-    <section className="landing" aria-label="디지털 선택 시뮬레이터">
+    <section className="landing" aria-label="FLOWTYPE">
       <div className="landing__ambient" aria-hidden="true">
         <div className="landing__orb landing__orb--1" />
         <div className="landing__orb landing__orb--2" />
@@ -51,6 +38,10 @@ export function IntroPage({ onStart, onAbout }: IntroPageProps) {
           <Multiline text={introCopy.subtitle} />
         </p>
 
+        <p className="landing__hint landing__reveal landing__reveal--2">
+          {introCopy.hint}
+        </p>
+
         <div className="landing__cta landing__reveal landing__reveal--3">
           <Button size="lg" onClick={onStart}>
             {introCopy.cta}
@@ -60,12 +51,8 @@ export function IntroPage({ onStart, onAbout }: IntroPageProps) {
 
       <footer className="landing__footer landing__reveal landing__reveal--4">
         <button type="button" className="landing__about-link mi-text-link" onClick={onAbout}>
-          프로젝트 소개
+          {introCopy.aboutLink}
         </button>
-        <span className="landing__footer-divider" aria-hidden="true">
-          ·
-        </span>
-        <span>졸업작품 · 2026</span>
       </footer>
     </section>
   )

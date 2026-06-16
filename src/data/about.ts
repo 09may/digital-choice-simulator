@@ -1,3 +1,5 @@
+import { brandName } from './brand'
+
 export interface AboutSection {
   id: string
   number: string
@@ -15,77 +17,77 @@ export interface AboutValue {
 }
 
 export const aboutCopy = {
-  eyebrow: 'Digital Behavior Research · Graduation Project 2026',
-  title: '디지털 선택\n시뮬레이터',
-  tagline:
-    '디지털 환경 속 반복되는 선택을 수집·해석하여\n개인의 행동 패턴을 리포트로 반환하는\n인터랙티브 분석 시스템입니다.',
+  eyebrow: brandName,
+  title: brandName,
+  tagline: '당신의 디지털 선택을 읽다',
 
   sections: [
     {
       id: 'problem',
       number: '01',
-      title: '문제 정의',
-      lead: '디지털 사용 시간은 측정되지만, 선택의 동기와 성향은 거의 설명되지 않습니다.',
-      body: '우리는 "스크린 타임"으로 디지털 사용을 평가하지만, 같은 2시간이라도 연결·성장·휴식을 위한 선택은 전혀 다른 심리에서 나옵니다.\n\n디지털 선택과 성향의 관계를 설명할 언어가 부족하기 때문에, 사용자는 자신의 패턴을 이해하기보다 죄책감을 느끼기 쉽습니다. 본 프로젝트는 이 간극을 "선택 패턴 분석"으로 메우는 것을 목표로 합니다.',
+      title: '왜 FLOWTYPE인가',
+      lead: '사용 시간은 보여주지만, 선택의 이유는 보여주지 않습니다.',
+      body: '같은 2시간이라도 의미는 전혀 다릅니다.\n누군가는 연결을 위해, 누군가는 휴식을 위해, 누군가는 무의식적으로 화면을 켭니다.\n\nFLOWTYPE는 "시간"이 아니라\n그 시간을 만든 "선택"을 읽습니다.',
     },
     {
       id: 'intro',
       number: '02',
-      title: '연구 목적',
-      lead: '"얼마나 썼는가"가 아니라, "왜 그렇게 선택하는가"를 탐구합니다.',
-      body: '「디지털 선택 시뮬레이터」는 5개의 상황 질문 응답을 분석하여 개인 맞춤 디지털 성향 리포트를 생성하는 연구형 인터랙티브 경험입니다.\n\n임상 진단 도구가 아닙니다. 사용자가 자신의 디지털 행동을 객관적으로 돌아볼 수 있는 해석 프레임을 제공합니다.',
+      title: '우리가 보는 것',
+      lead: '중요한 건 사용량이 아니라 선택의 방향입니다.',
+      body: '알림, 스크롤, 메시지, 영상 시청.\n이 작은 선택들이 반복되며 하나의 패턴을 만듭니다.\n\n우리는 그 패턴을 통해\n당신의 디지털 경향을 이해합니다.',
     },
     {
       id: 'what',
       number: '03',
-      title: '디지털 선택이란',
-      lead: '알림 확인, 영상 선택, 메시지 전송 — 작은 결정의 반복이 행동 패턴을 만듭니다.',
-      body: '디지털 선택이란 디지털 환경에서 내리는 의식적·무의식적 결정을 말합니다. 본 시스템은 이를 세 가지 행동 축으로 분류합니다.\n\n연결(Social) — 관계·소통\n성장(Productive) — 학습·생산·정리\n즐거움(Entertainment) — 휴식·자극·감정 조절',
+      title: '세 가지 흐름',
+      lead: '모든 선택은 세 가지 방향 중 하나로 흐릅니다.',
+      body: '연결: 사람과 관계를 중심에 둔 선택\n성장: 배우고 정리하며 나아가려는 선택\n즐거움: 쉬고 회복하기 위한 선택\n\n다섯 번의 선택이 모이면\n당신이 어느 쪽에 더 가까운지 드러납니다.',
     },
     {
       id: 'method',
       number: '04',
-      title: '분석 구조',
-      lead: '3 Type · Intensity · Subtype — 3단계 파이프라인으로 결과를 생성합니다.',
-      body: 'Step 1 — Type Classification\n5개 응답을 세 축으로 분류하고, 최다 출현 축을 Primary Type으로 결정합니다.\n\nStep 2 — Intensity Calculation\nPrimary Type 출현 빈도로 강도를 산출합니다.\n· 4~5회 Heavy · 3회 Mid · 1~2회 Light\n\nStep 3 — Subtype Matching\nType + Intensity로 9종 세부 유형을 매칭합니다. 세 축이 고르게 분포하면 「디지털 조화형」으로 분류합니다.\n\n최종 출력: 10종 프로필 분석 리포트',
+      title: '다섯 개의 질문',
+      lead: '습관에서 시작해, 방향으로 이어집니다.',
+      body: '1–2. 습관 — 무의식적인 첫 행동\n3–4. 상황 — 순간 반응\n5. 방향 — 하루를 대표하는 선택\n\n질문이 이어질수록\n당신의 패턴은 더 선명해집니다.',
     },
     {
-      id: 'ux',
+      id: 'flowtype',
       number: '05',
-      title: 'UX 설계 의도',
-      lead: '단순 설문이 아니라, 분석 시스템을 경험하도록 설계했습니다.',
-      body: '습관(1~2) → 상황 반응(3~4) → 성향 확정(5)의 3단계 질문 구조로 점진적 몰입을 유도합니다. 중간 analyzing 단계와 calculating 단계는 "시스템이 실제로 해석하는 과정"을 체감하게 하며, Result는 각 섹션의 존재 이유를 설명하는 리포트 형식으로 구성했습니다.\n\n목표는 빠른 결과 제공이 아니라, 자기 관찰의 깊이를 확보하는 것입니다.',
+      title: '선택 → 흐름 → 타입',
+      lead: '작은 선택이 모여 하나의 흐름이 됩니다.',
+      body: 'Choice: 다섯 번의 선택\nFlow: 선택이 만든 방향성\nType: 그 흐름의 이름\n\n이 결과는 평가가 아니라\n현재 상태의 해석입니다.',
     },
     {
       id: 'value',
       number: '06',
-      title: '기대 효과',
-      lead: '진단이 아닌 해석 — 패턴을 읽고 돌아보는 경험.',
-      body: '올바른 사용법을 강요하지 않습니다. 선택 데이터를 바탕으로 성향 분포, 행동 패턴, 라이프스타일 제안, 주의점을 담은 개인 리포트를 제공합니다.\n\n졸업 작품으로서, 디지털 행동 분석을 설득력 있는 UX·카피·리포트 구조로 구현하는 것이 기여점입니다.',
+      title: '이 테스트의 태도',
+      lead: '이건 테스트가 아니라 해석입니다.',
+      body: '정답도 오답도 없습니다.\n좋고 나쁨도 없습니다.\n\n그저 지금의 선택들이\n어떤 흐름을 만들고 있는지 보여줍니다.',
     },
   ] satisfies AboutSection[],
 
   values: [
     {
       icon: '◇',
-      title: '3-Phase 질문',
-      description: '습관 → 상황 → 확정. 점진적으로 깊어지는 자기 탐색 구조.',
+      title: 'Choice',
+      description: '다섯 번의 선택.',
     },
     {
       icon: '○',
-      title: '분석 파이프라인',
-      description: 'Type · Intensity · Subtype 3단계로 결과를 생성.',
+      title: 'Flow',
+      description: '선택이 만든 방향성.',
     },
     {
       icon: '△',
-      title: '리포트형 결과',
-      description: '섹션별 근거 설명이 포함된 분석 리포트 UX.',
+      title: 'Type',
+      description: '그 흐름의 이름.',
     },
   ] satisfies AboutValue[],
 
   closing:
-    '디지털 선택은 패턴이 됩니다.\n이 프로젝트는 그 패턴을 함께 읽어보는\n인터랙티브 분석 경험입니다.',
+    '선택 → 흐름 → 타입.\n지금, 당신의 흐름을 확인해 보세요.',
 
   backLabel: '돌아가기',
-  startLabel: '분석 시작하기',
+  startLabel: '시작하기',
+  linkLabel: '이 경험이 궁금하다면',
 }

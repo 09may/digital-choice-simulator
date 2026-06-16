@@ -4,12 +4,12 @@ import {
   profileTypeOrder,
   profileTypeLabels,
   profileTypeColors,
-  subtypeLabels,
   resultCopy,
+  aboutCopy,
 } from '../data'
 import type { DigitalProfile, ProfileScore } from '../types'
 import { buildShareUrl } from '../utils/share-result'
-import { Button, ScoreBar } from '../components'
+import { Button, Multiline, ScoreBar } from '../components'
 import './ResultPage.css'
 
 interface ResultPageProps {
@@ -20,18 +20,6 @@ interface ResultPageProps {
   onAbout: () => void
 }
 
-function MultilineText({ text }: { text: string }) {
-  return (
-    <>
-      {text.split('\n').map((line, i, arr) => (
-        <span key={i}>
-          {line}
-          {i < arr.length - 1 && <br />}
-        </span>
-      ))}
-    </>
-  )
-}
 
 interface ReportCardProps {
   index: number
@@ -81,8 +69,13 @@ export function ResultPage({
     .map((type) => scores.find((s) => s.type === type))
     .filter(Boolean) as ProfileScore[]
 
-  const primaryScore = orderedScores.find((s) => s.type === profile.baseType)
-  const subtypeLabel = subtypeLabels[profile.subtype]
+  const isHarmonist = profile.subtype === 'digital-harmonist'
+  const primaryScore = isHarmonist
+    ? undefined
+    : orderedScores.find((s) => s.type === profile.baseType)
+  const subtypeLabel = isHarmonist
+    ? '조화형'
+    : profileTypeLabels[profile.baseType]
 
   const handleShare = async () => {
     const url = buildShareUrl(profile.subtype)
@@ -91,14 +84,29 @@ export function ResultPage({
       setShareCopied(true)
       window.setTimeout(() => setShareCopied(false), 2000)
     } catch {
-      window.prompt('아래 링크를 복사하세요:', url)
+      // Legacy fallback: create a temporary input to copy from
+      const el = document.createElement('input')
+      el.value = url
+      el.style.position = 'fixed'
+      el.style.opacity = '0'
+      document.body.appendChild(el)
+      el.select()
+      try {
+        document.execCommand('copy')
+        setShareCopied(true)
+        window.setTimeout(() => setShareCopied(false), 2000)
+      } catch {
+        window.prompt('아래 링크를 복사하세요:', url)
+      } finally {
+        document.body.removeChild(el)
+      }
     }
   }
 
   return (
     <section
       className="result-report"
-      aria-label="결과 리포트"
+      aria-label="FLOW PROFILE"
       style={{ '--report-accent': profile.color } as CSSProperties}
     >
       <div className="result-report__ambient" aria-hidden="true">
@@ -120,7 +128,7 @@ export function ResultPage({
             )}
             <span
               className="result-report__code"
-              aria-label={`분석 코드 ${profile.analysisCode}`}
+              aria-label={`유형 코드 ${profile.analysisCode}`}
             >
               {profile.analysisCode}
             </span>
@@ -128,26 +136,29 @@ export function ResultPage({
               {profile.emoji}
             </span>
             <h1 className="result-report__title">
-              <MultilineText text={profile.title} />
+              <Multiline text={profile.title} />
             </h1>
             <p className="result-report__subtype">{subtypeLabel}</p>
             {primaryScore && (
               <p className="result-report__meta">
-                {isShared ? (
-                  <>
-                    이 유형의 대표 분포 —{' '}
-                    <strong>{profileTypeLabels[profile.baseType]}</strong> 성향{' '}
-                    <strong>{primaryScore.score}회</strong>
-                  </>
-                ) : (
-                  <>
-                    5개의 선택 중{' '}
-                    <strong>{profileTypeLabels[profile.baseType]}</strong> 성향이{' '}
-                    <strong>{primaryScore.score}회</strong> 나타났습니다.
-                  </>
-                )}
+                <Multiline
+                  text={
+                    isShared
+                      ? resultCopy.scoreLine.shared(
+                          profileTypeLabels[profile.baseType],
+                          primaryScore.score,
+                        )
+                      : resultCopy.scoreLine.personal(
+                          profileTypeLabels[profile.baseType],
+                          primaryScore.score,
+                        )
+                  }
+                />
               </p>
             )}
+            <p className="result-report__meta result-report__evidence">
+              {resultCopy.evidenceNote}
+            </p>
           </header>
 
           <figure className="result-report__vibe-card result-report__reveal result-report__reveal--1">
@@ -156,13 +167,13 @@ export function ResultPage({
               <span className="result-report__vibe-mark" aria-hidden="true">
                 "
               </span>
-              <MultilineText text={profile.vibe} />
+              <Multiline text={profile.vibe} />
             </blockquote>
           </figure>
 
           <ReportCard
             index={1}
-            title="당신의 디지털 성향"
+            title={resultCopy.cardTitles.digitalTendency}
             icon="◈"
             variant="accent"
             revealClass="result-report__reveal--2"
@@ -173,7 +184,7 @@ export function ResultPage({
 
           <ReportCard
             index={2}
-            title="핵심 특징 3가지"
+            title={resultCopy.cardTitles.keyTraits}
             icon="◆"
             revealClass="result-report__reveal--3"
           >
@@ -190,7 +201,7 @@ export function ResultPage({
 
           <ReportCard
             index={3}
-            title="행동 패턴 분석"
+            title={resultCopy.cardTitles.behaviorPattern}
             icon="◎"
             revealClass="result-report__reveal--4"
           >
@@ -200,34 +211,24 @@ export function ResultPage({
 
           <ReportCard
             index={4}
-            title="추천 디지털 라이프 스타일"
+            title={resultCopy.cardTitles.balancePoint}
             icon="✦"
             variant="accent"
             revealClass="result-report__reveal--5"
           >
-            <p className="result-report__meta">{resultCopy.sections.recommendedLifestyle}</p>
+            <p className="result-report__meta">{resultCopy.sections.balancePoint}</p>
             <p className="result-report__text">{profile.recommendedLifestyle}</p>
-          </ReportCard>
-
-          <ReportCard
-            index={5}
-            title="주의해야 할 성향"
-            icon="!"
-            variant="warning"
-            revealClass="result-report__reveal--6"
-          >
-            <p className="result-report__meta">{resultCopy.sections.caution}</p>
             <p className="result-report__text result-report__text--warning">
               {profile.caution}
             </p>
           </ReportCard>
 
           <ReportCard
-            index={6}
-            title="성향 분포"
+            index={5}
+            title={resultCopy.cardTitles.distribution}
             icon="▤"
             variant="chart"
-            revealClass="result-report__reveal--7"
+            revealClass="result-report__reveal--6"
           >
             <p className="result-report__meta">{resultCopy.sections.distribution}</p>
             <div className="result-report__scores">
@@ -244,28 +245,29 @@ export function ResultPage({
           </ReportCard>
 
           <ReportCard
-            index={7}
-            title="한 줄 요약"
+            index={6}
+            title={resultCopy.cardTitles.summary}
             icon="—"
             variant="summary"
-            revealClass="result-report__reveal--8"
+            revealClass="result-report__reveal--7"
           >
             <p className="result-report__meta">{resultCopy.sections.summary}</p>
             <p className="result-report__summary">{profile.summary}</p>
           </ReportCard>
 
-          <footer className="result-report__footer result-report__reveal result-report__reveal--9">
-            <Button size="lg" onClick={onRestart}>
-              {isShared ? '나도 분석하기' : '다시 분석하기'}
-            </Button>
-            <Button variant="secondary" onClick={handleShare}>
+          <footer className="result-report__footer result-report__reveal result-report__reveal--8">
+            <Button size="lg" onClick={handleShare}>
               {shareCopied ? resultCopy.shareCopied : resultCopy.shareButton}
             </Button>
+            <Button variant="secondary" onClick={onRestart}>
+              {isShared ? resultCopy.sharedStartButton : resultCopy.restartButton}
+            </Button>
             <button type="button" className="result-report__about-link mi-text-link" onClick={onAbout}>
-              프로젝트 소개
+              {aboutCopy.linkLabel}
             </button>
+            <p className="result-report__disclaimer">{resultCopy.disclaimer}</p>
             <p className="result-report__credit">
-              디지털 선택 시뮬레이터 · 졸업작품 2026
+              {resultCopy.credit}
             </p>
           </footer>
         </div>

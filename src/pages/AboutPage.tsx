@@ -23,7 +23,7 @@ function Multiline({ text }: { text: string }) {
 
 export function AboutPage({ onBack, onStart, showStart = false }: AboutPageProps) {
   return (
-    <section className="about-page" aria-label="프로젝트 소개">
+    <section className="about-page" aria-label="FLOWTYPE">
       <div className="about-page__ambient" aria-hidden="true">
         <div className="about-page__orb about-page__orb--1" />
         <div className="about-page__orb about-page__orb--2" />

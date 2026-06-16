@@ -27,7 +27,7 @@ export function AnalysisCheckpointPage({
   return (
     <section
       className="analysis-checkpoint"
-      aria-label="중간 분석"
+      aria-label="흐름 전환"
       aria-live="polite"
     >
       <div className="analysis-checkpoint__ambient" aria-hidden="true">
@@ -43,6 +43,7 @@ export function AnalysisCheckpointPage({
 
         <p className="analysis-checkpoint__label">{copy.label}</p>
         <h2 className="analysis-checkpoint__title">{copy.title}</h2>
+        <p className="analysis-checkpoint__subtitle">{copy.subtitle}</p>
 
         <p className="analysis-checkpoint__message" key={messageIndex}>
           {copy.messages[messageIndex]}

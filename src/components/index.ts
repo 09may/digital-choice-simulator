@@ -1,4 +1,5 @@
 export { Button } from './Button'
+export { Multiline } from './Multiline'
 export { Card, Chip } from './Card'
 export { OptionCard, ScoreBar, TraitChip } from './OptionCard'
 export { ProgressBar, StepIndicator, QuizProgress } from './ProgressBar'

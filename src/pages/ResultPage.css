@@ -182,6 +182,11 @@
   font-weight: var(--ds-font-semibold);
 }
 
+.result-report__evidence {
+  margin-top: var(--ds-space-xs);
+  font-style: italic;
+}
+
 .result-report__vibe-card {
   margin: 0;
   padding: var(--ds-space-card);
@@ -398,6 +403,14 @@
 
 .result-report__about-link:hover {
   color: var(--report-accent);
+}
+
+.result-report__disclaimer {
+  font-size: var(--ds-text-xs);
+  color: var(--ds-color-text-tertiary);
+  margin: var(--ds-space-sm) 0 0;
+  line-height: var(--ds-leading-normal);
+  max-width: 28rem;
 }
 
 .result-report__credit {

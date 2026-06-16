@@ -90,6 +90,13 @@
   margin: 0 0 var(--ds-space-sm);
 }
 
+.calculating-page__subtitle {
+  font-size: var(--ds-text-sm);
+  color: var(--ds-color-text-secondary);
+  margin: 0 0 var(--ds-space-md);
+  line-height: var(--ds-leading-relaxed);
+}
+
 .calculating-page__message {
   font-size: var(--ds-text-sm);
   color: var(--ds-color-text-tertiary);

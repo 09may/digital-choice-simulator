@@ -130,8 +130,16 @@
   max-width: 440px;
 }
 
+.landing__hint {
+  font-size: var(--ds-text-sm);
+  line-height: var(--ds-leading-relaxed);
+  color: var(--ds-color-text-tertiary);
+  margin: var(--ds-space-md) 0 0;
+  max-width: 440px;
+}
+
 .landing__cta {
-  margin-top: var(--ds-space-3xl);
+  margin-top: var(--ds-space-2xl);
 }
 
 .landing__cta .ds-btn--lg {

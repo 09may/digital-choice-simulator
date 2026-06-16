@@ -8,7 +8,8 @@ export {
 } from './profiles'
 
 export { questions, introCopy, calculatingCopy, TOTAL_QUESTIONS } from './questions'
-export { getSelectionReactions, questionPhases } from './quiz-copy'
+export { getSelectionReactions, questionPhases, questionPhaseStatus } from './quiz-copy'
+export { brandName } from './brand'
 export { aboutCopy } from './about'
 export { resultCopy } from './result-copy'
 export {

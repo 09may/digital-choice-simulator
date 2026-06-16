@@ -13,7 +13,7 @@ export function CalculatingPage() {
   }, [])
 
   return (
-    <section className="calculating-page" aria-label="분석 중" aria-live="polite">
+    <section className="calculating-page" aria-label="결과를 정리하는 중입니다" aria-live="polite">
       <div className="calculating-page__ambient" aria-hidden="true">
         <div className="calculating-page__orb" />
       </div>
@@ -25,6 +25,7 @@ export function CalculatingPage() {
         </div>
 
         <h2 className="calculating-page__title">{calculatingCopy.title}</h2>
+        <p className="calculating-page__subtitle">{calculatingCopy.subtitle}</p>
 
         <p className="calculating-page__message" key={messageIndex}>
           {calculatingCopy.messages[messageIndex]}
