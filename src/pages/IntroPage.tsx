@@ -73,13 +73,13 @@ export function IntroPage({ onStart, onAbout }: IntroPageProps) {
             {introCopy.cta}
           </Button>
         </div>
-      </div>
 
-      <footer className="landing__footer landing__reveal landing__reveal--4">
-        <button type="button" className="landing__about-link mi-text-link" onClick={onAbout}>
-          {introCopy.aboutLink}
-        </button>
-      </footer>
+        <footer className="landing__footer landing__reveal landing__reveal--4">
+          <button type="button" className="landing__about-link mi-text-link" onClick={onAbout}>
+            {introCopy.aboutLink}
+          </button>
+        </footer>
+      </div>
     </section>
   )
 }
